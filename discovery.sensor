@@ -1,0 +1,39 @@
+#!/bin/bash
+SENSORS="/usr/bin/sensors"
+EGREP="/bin/egrep"
+TR="/usr/bin/tr"
+CUT="/usr/bin/cut"
+
+/bin/cat << END
+{
+	"data":[
+END
+
+JSONHACK=""
+for chip in $($SENSORS -u 2>/dev/null|$EGREP "^[^:]+$")
+do
+	while read sensor
+	do
+		case $sensor in
+			temp*)
+				UNITS="°C"
+				;;
+			in*)
+				UNITS="V"
+				;;
+			fan*)
+				UNITS="RPM"
+				;;
+			*)
+				UINTS=""
+				;;
+		esac					
+		/bin/echo -e "\t\t{\"{#CHIP}\":\"$chip\", \"{#SENSOR}\":\"$sensor\", \"{#UNITS}\":\"$UNITS\"}$JSONHACK"
+		JSONHACK=","
+	done <<<$($SENSORS -u $chip 2>/dev/null|$EGREP "_input:"|$TR -d " "|$CUT -d_ -f1)
+done|tac
+
+/bin/cat << END
+	]
+}
+END

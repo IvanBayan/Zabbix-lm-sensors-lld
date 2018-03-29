@@ -1,2 +1,2 @@
 # Zabbix-lm-sensors-lld
-Simple script for sensor discovery
+Just LLD script which provide discovery data for sensor[] items.
