@@ -5,9 +5,9 @@ Should work with older zabbix (but I haven't opportunity to test it). Basic temp
 
 Installation:
 
--     Check that paths to **egrep**, **cut**, **tr** and sensors are valid.
--     Run script as zabbix user, check that it returns valid output
--     Drop **userparameter_sensors.conf** in **zabbix_agentd**.conf.d directory.
+- Check that paths to **egrep**, **cut**, **tr** and sensors are valid.
+- Run script as zabbix user, check that it returns valid output
+- Drop **userparameter_sensors.conf** in **zabbix_agentd**.conf.d directory.
 
 Example output:
 
