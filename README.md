@@ -7,7 +7,7 @@ Installation:
 
 - Check that paths to **egrep**, **cut**, **tr** and sensors are valid.
 - Run script as zabbix user, check that it returns valid output
-- Drop **userparameter_sensors.conf** in **zabbix_agentd**.conf.d directory.
+- Drop **userparameter_sensors.conf** in **zabbix_agentd.conf.d** directory.
 
 Example output:
 
