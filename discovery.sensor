@@ -30,7 +30,7 @@ do
 		esac					
 		/bin/echo -e "\t\t{\"{#CHIP}\":\"$chip\", \"{#SENSOR}\":\"$sensor\", \"{#UNITS}\":\"$UNITS\"}$JSONHACK"
 		JSONHACK=","
-	done <<<$($SENSORS -u $chip 2>/dev/null|$EGREP "_input:"|$TR -d " "|$CUT -d_ -f1)
+	done <<<"$($SENSORS -u $chip 2>/dev/null|$EGREP "_input:"|$TR -d " "|$CUT -d_ -f1)"
 done|tac
 
 /bin/cat << END
