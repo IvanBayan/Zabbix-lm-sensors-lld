@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>6.0</version>
+    <date>2022-05-25T21:58:14Z</date>
+    <groups>
+        <group>
+            <name>Templates</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>Template Lm-sensors</template>
+            <name>Template Lm-sensors</name>
+            <groups>
+                <group>
+                    <name>Templates</name>
+                </group>
+            </groups>
+            <discovery_rules>
+                <discovery_rule>
+                    <name>Discovery lm-sensors</name>
+                    <key>discovery.sensor</key>
+                    <delay>3600</delay>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>{#SENSOR} on {#CHIP}</name>
+                            <key>sensor[{#CHIP},{#SENSOR}]</key>
+                            <delay>300</delay>
+                            <value_type>FLOAT</value_type>
+                            <units>{#UNITS}</units>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Lm-sensors</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                    </item_prototypes>
+                    <graph_prototypes>
+                        <graph_prototype>
+                            <name>{#SENSOR} on {#CHIP}</name>
+                            <graph_items>
+                                <graph_item>
+                                    <color>199C0D</color>
+                                    <item>
+                                        <host>Template Lm-sensors</host>
+                                        <key>sensor[{#CHIP},{#SENSOR}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                    </graph_prototypes>
+                </discovery_rule>
+            </discovery_rules>
+            <dashboards>
+                <dashboard>
+                    <name>Template Lm-sensors</name>
+                    <display_period>3600</display_period>
+                    <pages>
+                        <page>
+                            <widgets>
+                                <widget>
+                                    <type>GRAPH_PROTOTYPE</type>
+                                    <name>{#SENSOR} on {#CHIP}</name>
+                                    <width>23</width>
+                                    <height>16</height>
+                                    <fields>
+                                        <field>
+                                            <type>INTEGER</type>
+                                            <name>rows</name>
+                                            <value>4</value>
+                                        </field>
+                                        <field>
+                                            <type>INTEGER</type>
+                                            <name>source_type</name>
+                                            <value>3</value>
+                                        </field>
+                                        <field>
+                                            <type>ITEM_PROTOTYPE</type>
+                                            <name>itemid</name>
+                                            <value>
+                                                <key>sensor[{#CHIP},{#SENSOR}]</key>
+                                                <host>Template Lm-sensors</host>
+                                            </value>
+                                        </field>
+                                    </fields>
+                                </widget>
+                            </widgets>
+                        </page>
+                    </pages>
+                </dashboard>
+            </dashboards>
+        </template>
+    </templates>
+</zabbix_export>
