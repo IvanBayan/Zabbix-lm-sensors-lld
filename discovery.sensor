@@ -28,7 +28,7 @@ do
                                 UNITS="RPM"
                                 ;;
                         *)
-                                UINTS=""
+                                UNITS=""
                                 ;;
                 esac
                 /bin/echo -e "\t\t{\"{#CHIP}\":\"$chip\", \"{#SENSOR}\":\"$sensor\", \"{#UNITS}\":\"$UNITS\"}$JSONHACK"
